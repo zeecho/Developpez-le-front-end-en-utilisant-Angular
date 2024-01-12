@@ -1,0 +1,26 @@
+$greenColor: #04838f;
+
+header {
+  margin-top: 10px;
+  min-height: 50px;
+}
+#back-button {
+  color: $greenColor;
+  text-decoration: none;
+  padding: 10px;
+  margin-top: 10px p !important;
+  font-size: 35px;
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.chart-title, .ng-star-inserted text {
+  margin-top: 20px;
+  font-size: 40px;
+  color: grey;
+  text-align: center;
+}

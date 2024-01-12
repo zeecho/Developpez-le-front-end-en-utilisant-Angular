@@ -1,0 +1,35 @@
+<header>
+  <a routerLink="/" id="back-button">🡨</a>
+</header>
+<h1 id="title" class="titlebox">{{ countryName}}</h1>
+
+<div class="info">
+  <div class="infobox">
+    <div class="name-infobox">Number of entries</div>
+    <div>{{ (participationsNumber$ | async)  }}</div>
+  </div>
+
+  <div class="infobox">
+    <div class="name-infobox">Total number of medals</div>
+    <div>{{ numberOfMedals$ | async}}</div>
+  </div>
+
+  <div class="infobox">
+    <div class="name-infobox">Total number of athletes</div>
+    <div>{{ numberOfAthletes$ | async }}</div>
+  </div>
+</div>
+
+<div class="chart-container">
+  <ngx-charts-line-chart 
+      [results]="participationsData$ | async"
+      [legend]="false"
+      [xAxis]="true"
+      [yAxis]="true"
+      [xAxisLabel]="'Dates'"
+      [showXAxisLabel]="false"
+      [xAxisTickFormatting]="formatDataLabel"
+      >
+  </ngx-charts-line-chart>
+  <span class="chart-title">Dates</span>
+</div>

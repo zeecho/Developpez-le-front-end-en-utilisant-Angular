@@ -1,1 +1,70 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  font-family: Roboto, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+$greenColor: #04838f;
+ngx-tooltip-content.ngx-charts-tooltip-content.type-tooltip {
+  background-color: $greenColor;
+  font-size: 20px;
+}
+ngx-charts-pie-chart .pie-label {
+  font-size: 20px;
+}
+ngx-charts-line-chart text {
+  font-size: 18px;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.titlebox {
+  padding: 10px;
+  background-color: $greenColor;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.infobox {
+  margin: 10px;
+  border: solid 2px $greenColor;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  // width: 50%;
+}
+
+.name-infobox {
+  color: grey;
+}
+
+@media (max-width: 768px) {
+  .titlebox {
+    width: 100%;
+  }
+  .infobox {
+    width: 100%;
+  }
+}

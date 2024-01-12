@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
+import { Observable, tap, map, reduce, partition, take } from 'rxjs';
+import { Olympic } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 
 @Component({
@@ -8,11 +10,24 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  public olympics$: Observable<any> = of(null);
+  public olympics$!: Observable<Olympic[]>;
+  public olympicsDataForChartPie$!: Observable<Object[]>;
+  public numberOfJOs!: number;
 
-  constructor(private olympicService: OlympicService) {}
+  constructor(protected olympicService: OlympicService, private router: Router) {}
 
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics();
+
+    this.olympics$.pipe(take(2)).subscribe(olympics => {
+      this.numberOfJOs = this.olympicService.getNumberOfParticipationYears(olympics);
+    }
+    );
+    
+    this.olympicsDataForChartPie$ = this.olympicService.getOlympicsDataForChartPie();
+  }
+
+  navigateToPieSliceSelected(event: any): void {
+    this.router.navigateByUrl(`/country/${event.name}`);
   }
 }
