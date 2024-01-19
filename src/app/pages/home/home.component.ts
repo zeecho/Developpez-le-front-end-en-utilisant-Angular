@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   public olympicsDataForChartPie$!: Observable<Object[]>;
   public numberOfJOs!: number;
 
-  constructor(protected olympicService: OlympicService, private router: Router) {}
+  constructor(protected olympicService: OlympicService, private router: Router) { }
 
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics();
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
       this.numberOfJOs = this.olympicService.getNumberOfParticipationYears(olympics);
     }
     );
-    
+
     this.olympicsDataForChartPie$ = this.olympicService.getOlympicsDataForChartPie();
   }
 

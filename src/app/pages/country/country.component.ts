@@ -17,8 +17,8 @@ export class CountryComponent implements OnInit {
   participationsData$!: Observable<Object>;
 
   constructor(private olympicService: OlympicService,
-              private route: ActivatedRoute,
-              private router: Router) {}
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.countryName = this.route.snapshot.params['country'];
@@ -29,7 +29,7 @@ export class CountryComponent implements OnInit {
       }
       i++;
     })
-    
+
     this.participationsNumber$ = this.olympicService.getParticipationsNumberByCountryName(this.countryName);
     this.participationsData$ = this.olympicService.getParticipationsDataByCountryName(this.countryName);
 

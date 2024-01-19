@@ -11,7 +11,7 @@ import { ErrorHandlingService } from './core/services/error-handling.service';
 export class AppComponent implements OnInit {
   errorMessage$ = this.errorHandlingService.errorMessage$;
 
-  constructor(private olympicService: OlympicService, private errorHandlingService: ErrorHandlingService) {}
+  constructor(private olympicService: OlympicService, private errorHandlingService: ErrorHandlingService) { }
 
   ngOnInit(): void {
     this.olympicService.loadInitialData().pipe(take(1)).subscribe();

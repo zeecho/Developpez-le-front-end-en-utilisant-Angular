@@ -12,13 +12,16 @@ body {
 }
 
 $greenColor: #04838f;
+
 ngx-tooltip-content.ngx-charts-tooltip-content.type-tooltip {
   background-color: $greenColor;
   font-size: 20px;
 }
+
 ngx-charts-pie-chart .pie-label {
   font-size: 20px;
 }
+
 ngx-charts-line-chart text {
   font-size: 18px;
 }
@@ -53,7 +56,6 @@ ngx-charts-line-chart text {
   display: flex;
   justify-content: center;
   text-align: center;
-  // width: 50%;
 }
 
 .name-infobox {
@@ -64,6 +66,7 @@ ngx-charts-line-chart text {
   .titlebox {
     width: 100%;
   }
+
   .infobox {
     width: 100%;
   }

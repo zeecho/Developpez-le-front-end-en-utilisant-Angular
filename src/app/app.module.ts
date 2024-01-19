@@ -15,4 +15,4 @@ import { CountryComponent } from './pages/country/country.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

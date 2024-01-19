@@ -13,7 +13,7 @@ export class OlympicService {
   private olympics$ = new BehaviorSubject<Olympic[]>([]);
   public errorMessage$ = this.errorHandlingService.errorMessage$;
 
-  constructor(private http: HttpClient, private errorHandlingService: ErrorHandlingService) {}
+  constructor(private http: HttpClient, private errorHandlingService: ErrorHandlingService) { }
 
   loadInitialData() {
     var initialData = this.http.get<Olympic[]>(this.olympicUrl).pipe(
@@ -46,7 +46,7 @@ export class OlympicService {
   }
 
   getNumberOfParticipationYears(olympics: Olympic[]): number {
-    let participationYears:number[] = [];
+    let participationYears: number[] = [];
     olympics.map(country => {
       country.participations.map(participation => {
         if (!participationYears.includes(participation.year)) {
@@ -66,7 +66,7 @@ export class OlympicService {
   }
 
   getAllAvailableCountries() {
-    let countries:string[] = [];
+    let countries: string[] = [];
 
     this.getOlympics().pipe(
       map(olympics => {
@@ -79,24 +79,15 @@ export class OlympicService {
     return countries;
   }
 
-  getCountryOrRedirect(countryName: string) {
-    let country = this.getCountry(countryName);
-    country.pipe(
-      map(country => {
-        console.log(country);
-      })
-    )
-  }
-
   getParticipationsNumberByCountryName(countryName: string) {
     return this.getCountry(countryName).pipe(
       map(country => {
-          return country.map(olympicsCountry => {
-            return olympicsCountry.participations.length;
-          }
-          )
+        return country.map(olympicsCountry => {
+          return olympicsCountry.participations.length;
+        }
+        )
       }
-    ))
+      ))
   }
 
   getNumberOfMedalsByCountryName(countryName: string) {
@@ -132,16 +123,16 @@ export class OlympicService {
       map(olympics => {
         return olympics.filter(olympic => olympic.country == countryName)
           .map(olympicCountry => {
-          return { 
-            name: `${countryName}`,
-            series: olympicCountry.participations.map(participation => {
             return {
-              value: participation.medalsCount,
-              name: participation.year
+              name: `${countryName}`,
+              series: olympicCountry.participations.map(participation => {
+                return {
+                  value: participation.medalsCount,
+                  name: participation.year
+                }
+              })
             }
-            })
-          }
-        })
+          })
       })
     )
   }
