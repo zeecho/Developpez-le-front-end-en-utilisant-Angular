@@ -30,4 +30,8 @@ export class HomeComponent implements OnInit {
   navigateToPieSliceSelected(event: any): void {
     this.router.navigateByUrl(`/country/${event.name}`);
   }
+
+  tooltipTextWithMedal(event: any): string {
+    return `${event.data.label}<br/> 🏅 ${event.data.value}`;
+  }
 }
